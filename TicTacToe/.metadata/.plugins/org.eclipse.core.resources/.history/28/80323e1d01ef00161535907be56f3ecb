@@ -1,0 +1,105 @@
+import java.util.Scanner;
+
+public class Test {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int col=0;
+		int row =0;
+		int taken =1;
+		System.out.println("x or y");
+		boolean turn = true;
+		int loop=1;
+		String g = scan.next();
+		Player p1= new Player(g);
+		Player p2 = p1.OtherGuy();
+		System.out.println("you are "+p1);
+		System.out.println("other Player is "+ p2);
+		Board b = new Board(3);
+		b.drawBoard();
+		while(loop==1){
+			if(turn==true){
+				System.out.println(p1+ "It is your turn");
+				while(taken==1){
+					System.out.print("Please the column for  a move ");
+					col = scan.nextInt();
+					System.out.print("Please the row for  a move ");
+					row = scan.nextInt();
+					if(b.isEmpty(row,col)==true){
+						taken=-1;
+					}
+					else{
+						System.out.println("Spot Already taken Please enter another move");
+					}
+				}
+				b.move(row, col, p1);
+				b.drawBoard();
+				turn=false;
+				taken=1;
+				if(b.isfull()==true){
+					System.out.println("It is a tie");
+					break;
+				}
+				if(b.CheckWinner()==null){
+				}
+				else if(b.CheckWinner().equalsIgnoreCase("x")){
+					System.out.println("X is the winner");
+					loop=-1;
+					break;
+				}
+				else if(b.CheckWinner().equalsIgnoreCase("y")){
+					System.out.println("y is the winner");
+					loop=-1;
+					break;
+				}
+
+			}
+			if(turn==false){
+				System.out.println(p2+ "It is your turn");
+				while(taken==1){
+					System.out.print("Please the column for  a move ");
+					col = scan.nextInt();
+					System.out.print("Please the row for  a move ");
+					row = scan.nextInt();
+					if(b.isEmpty(row,col)==true){
+						taken=-1;
+					}
+					else{
+						System.out.println("move already taken enter another move");
+					}
+
+
+				}
+				b.move(row, col, p2);
+				b.drawBoard();
+				turn=true;
+				taken=1;
+				if(b.isfull()==true){
+					System.out.println("It is a tie");
+					break;
+				}
+				if(b.CheckWinner()==null){
+				}
+				else if(b.CheckWinner().equalsIgnoreCase("x")){
+					System.out.println("X is the winner");
+					loop=-1;
+					break;
+				}
+				else if(b.CheckWinner().equalsIgnoreCase("y")){
+					System.out.println("y is the winner");
+					loop=-1;
+					break;
+				}
+
+
+			}
+
+		}
+		b.drawBoard();
+
+
+
+	}
+
+
+}

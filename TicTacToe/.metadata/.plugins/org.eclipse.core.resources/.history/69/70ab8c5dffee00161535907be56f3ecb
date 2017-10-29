@@ -1,0 +1,11 @@
+
+public class CPU {
+
+	private String name;
+	
+	public CPU(String s) {
+		name = s;
+	}
+	
+	
+}

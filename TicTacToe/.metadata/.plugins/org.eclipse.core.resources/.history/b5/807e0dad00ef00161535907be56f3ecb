@@ -1,0 +1,30 @@
+import java.util.Random;
+
+public class CPU {
+	
+	
+
+	private String name;
+	
+	public CPU(String s) {
+		name = s;
+	}
+	
+	public int chooseMove() {
+		while(true) {
+			
+			Random rand = new Random();
+			int randCol = rand.nextInt(9);
+			int randRow = rand.nextInt(9);
+			
+			if(Board.isEmpty(randCol, randRow)){
+				
+			}
+		}
+		
+		
+		return 1;
+	}
+	
+	
+}

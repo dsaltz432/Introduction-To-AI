@@ -1,0 +1,44 @@
+import java.util.Random;
+
+public class CPU {
+
+	private String name;
+	
+
+	public CPU(String s) {
+		name = s;
+	}
+	
+	public String getTCPU() {
+		return name;
+	}
+	
+	public void chooseMove() {
+		while(true) {
+			Random rand = new Random();
+			int randCol = rand.nextInt(3);
+			int randRow = rand.nextInt(3);
+			
+			if(Board.isEmpty(randCol, randRow)){
+				Board.moveCPU(randCol, randRow, name);
+				break;
+			}
+			else {
+				System.out.println("This space is already taken");
+			}
+			
+		}
+		
+	}
+	
+	public static String OtherGuyCPU(String human){
+		if(human.equalsIgnoreCase("x")){
+			return "y";
+		}
+		else{
+			return "x";
+		}
+	}
+	
+	
+}
